@@ -3,7 +3,7 @@
 ## Description
 This is a simple and user-friendly calculator web application that allows users to perform basic arithmetic operations. The app features a clean and responsive interface, making it accessible on both desktop and mobile devices
 
-![Capture](Image.png)
+![Capture](image.png)
 
 ## Features
 - Supports addition, subtraction, multiplication, and division.
