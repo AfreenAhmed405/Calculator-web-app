@@ -15,7 +15,6 @@ keys.addEventListener('click', e => {
       .forEach(k => k.classList.remove('is-depressed'))
 
     if (!action) {
-
         if (displayedNum === '0' || previousKeyType === 'operator') {
             display.textContent = keyContent;
         } else {
@@ -37,26 +36,40 @@ keys.addEventListener('click', e => {
         }
 
         if (action === 'add' || action === 'subtract' || action === 'multiply' || action === 'divide') {
+            const firstValue = calculator.dataset.firstValue;
+            const operator = calculator.dataset.action;
+
+            if (firstValue && action && previousKeyType !== 'operator') {
+                const secondValue = displayedNum;
+                const calcValue = calculate(firstValue, operator, secondValue);
+                display.textContent = calcValue;
+                calculator.dataset.firstValue = calcValue;
+            } else {
+                calculator.dataset.firstValue = displayedNum;
+                calculator.dataset.action = action;
+            }
+            
             key.classList.toggle('is-depressed');
             calculator.dataset.previousKeyType = 'operator';
-
-            calculator.dataset.firstValue = displayedNum;
-            calculator.dataset.operator = action;
         }
 
         if (action === 'equals') {
             const firstValue = calculator.dataset.firstValue;
-            const action = calculator.dataset.operator;
+            const action = calculator.dataset.action;
             const secondValue = displayedNum;
 
-            display.textContent = calculate(firstValue, action, secondValue);
+            if (firstValue && action && previousKeyType !== 'operator') {
+                const calcValue = calculate(firstValue, action, secondValue);
+                display.textContent = calcValue;
+                calculator.dataset.firstValue = calcValue;
+                calculator.dataset.previousKeyType = 'operator';
+            }
         }
 
         if (action === 'clear') {
-            calculator.dataset.firstValue = '0';
-            calculator.dataset.operator = 'add';
-            calculator.dataset.secondValue = '0';
-
+            calculator.dataset.firstValue = '';
+            calculator.dataset.secondValue = '';
+            calculator.dataset.action = '';
             display.textContent = '0';
         }
     }
@@ -65,7 +78,8 @@ keys.addEventListener('click', e => {
 function calculate(num1, action, num2) {
     let result = '';
     const n1 = parseFloat(num1);
-    const n2 = parseFloat(num2);
+    const n2 = parseFloat(num2); 
+           console.log(num1, num2);
 
     if (action === 'add') {
         result = n1 + n2;
