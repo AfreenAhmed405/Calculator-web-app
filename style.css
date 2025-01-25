@@ -1,0 +1,74 @@
+/* html {
+    box-sizing: border-box;
+}
+  
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+} */
+
+.heading {
+    margin: auto;
+}
+
+.calculator {
+    width: 500px;
+    padding: 30px;
+    background-color: lightblue;
+    margin: auto;
+}
+
+.display {
+    border-radius: 10px 10px 0 0;
+    background-color: black;
+    text-align: right;
+    padding: 30px 20px;
+    color: white;
+    font-size: xx-large;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.operator-button {
+    background-color: lightgrey;
+    padding: 20px 10px;
+    font-size: xx-large;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid grey;
+}
+
+button {
+    padding: 20px 10px;
+    font-size: xx-large;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid grey;
+}
+
+.equal-button {
+    background-color: lightsalmon;
+    color: #fff;
+    height: 100%;
+    grid-row-start: 2;
+    grid-row-end: 6;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    border: 1px solid grey;
+}
+
+.equal-button:active {
+    background-color: rgb(238, 140, 102);
+}
+
+button:active {
+    background-color: rgb(205, 205, 205);
+}
+
+.is-depressed {
+    background-color: grey;
+}
